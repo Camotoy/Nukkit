@@ -136,6 +136,9 @@ public class EntityHuman extends EntityHumanType {
                 if (skinTag.contains("SkinResourcePatch")) {
                     newSkin.setSkinResourcePatch(new String(skinTag.getByteArray("SkinResourcePatch"), StandardCharsets.UTF_8));
                 }
+                if (skinTag.contains("PlayFabId")) {
+                    newSkin.setPlayFabId(skinTag.getString("PlayFabId"));
+                }
                 if (skinTag.contains("GeometryData")) {
                     newSkin.setGeometryData(new String(skinTag.getByteArray("GeometryData"), StandardCharsets.UTF_8));
                 }
@@ -224,6 +227,7 @@ public class EntityHuman extends EntityHumanType {
                     .putInt("CapeImageWidth", this.getSkin().getCapeData().width)
                     .putInt("CapeImageHeight", this.getSkin().getCapeData().height)
                     .putByteArray("SkinResourcePatch", this.getSkin().getSkinResourcePatch().getBytes(StandardCharsets.UTF_8))
+                    .putString("PlayFabId", this.getSkin().getPlayFabId())
                     .putByteArray("GeometryData", this.getSkin().getGeometryData().getBytes(StandardCharsets.UTF_8))
                     .putByteArray("AnimationData", this.getSkin().getAnimationData().getBytes(StandardCharsets.UTF_8))
                     .putBoolean("PremiumSkin", this.getSkin().isPremium())

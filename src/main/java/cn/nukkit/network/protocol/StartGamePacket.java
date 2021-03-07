@@ -73,6 +73,8 @@ public class StartGamePacket extends DataPacket {
     public String premiumWorldTemplateId = "";
     public boolean isTrial = false;
     public boolean isMovementServerAuthoritative;
+    public int movementRewindHistorySize = 0;
+    public boolean isBlockBreakingServerAuthoritative;
     public boolean isInventoryServerAuthoritative;
     public long currentTick;
 
@@ -141,7 +143,9 @@ public class StartGamePacket extends DataPacket {
         this.putString(this.worldName);
         this.putString(this.premiumWorldTemplateId);
         this.putBoolean(this.isTrial);
-        this.putVarInt(this.isMovementServerAuthoritative ? 1 : 0); // 2 - rewind
+        this.putUnsignedVarInt(this.isMovementServerAuthoritative ? 1 : 0); // 2 - rewind
+        this.putInt(this.movementRewindHistorySize);
+        this.putBoolean(this.isBlockBreakingServerAuthoritative);
         this.putLLong(this.currentTick);
         this.putVarInt(this.enchantmentSeed);
         this.putUnsignedVarInt(0); // Custom blocks

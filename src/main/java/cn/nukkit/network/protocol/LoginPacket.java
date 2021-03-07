@@ -102,6 +102,10 @@ public class LoginPacket extends DataPacket {
             skin.setSkinResourcePatch(new String(Base64.getDecoder().decode(skinToken.get("SkinResourcePatch").getAsString()), StandardCharsets.UTF_8));
         }
 
+        if (skinToken.has("PlayFabId")) {
+            skin.setPlayFabId(skinToken.get("PlayFabId").getAsString());
+        }
+
         if (skinToken.has("SkinGeometryData")) {
             skin.setGeometryData(new String(Base64.getDecoder().decode(skinToken.get("SkinGeometryData").getAsString()), StandardCharsets.UTF_8));
         }
